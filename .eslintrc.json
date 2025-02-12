@@ -1,8 +1,17 @@
 {
   "plugins": ["react"],
   "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parserOptions": {
+    "ecmaVersion": 2020, // Utiliser une version ECMAScript moderne
+    "sourceType": "module" // Permet l'utilisation de 'import' et 'export'
+  },
+  "env": {
+    "es6": true, // Activer les fonctionnalités ES6
+    "browser": true, // Si tu développes pour un environnement web
+    "node": true // Si tu développes pour Node.js
+  },
   "rules": {
-    "react/prop-types": "warn", // Cette règle activera un avertissement si des props incorrectes sont utilisées
-    "react/react-in-jsx-scope": "off"
+    "react/prop-types": "warn", // Avertir si des props incorrectes sont utilisées
+    "react/react-in-jsx-scope": "off" // Désactiver cette règle si tu utilises React 17 ou version supérieure
   }
 }
