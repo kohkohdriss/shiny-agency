@@ -1,0 +1,8 @@
+{
+  "plugins": ["react"],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "rules": {
+    "react/prop-types": "warn", // Cette règle activera un avertissement si des props incorrectes sont utilisées
+    "react/react-in-jsx-scope": "off"
+  }
+}
