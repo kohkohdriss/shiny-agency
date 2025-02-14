@@ -12,6 +12,7 @@
   },
   "rules": {
     "react/prop-types": "warn", // Avertir si des props incorrectes sont utilisées
-    "react/react-in-jsx-scope": "off" // Désactiver cette règle si tu utilises React 17 ou version supérieure
+    "react/react-in-jsx-scope": "off", // Désactiver cette règle si tu utilises React 17 ou version supérieure
+    "react/no-unescaped-entities": "off"
   }
 }
