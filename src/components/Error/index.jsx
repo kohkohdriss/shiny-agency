@@ -1,77 +1,47 @@
-function Error() {
-  const containerStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100vh',
-    backgroundColor: '#ffebeb',
-    color: '#333',
-    textAlign: 'center',
-    padding: '20px',
-    animation: 'fadeIn 1s ease-out',
-  }
+import pageError from '../../assets/page-found.avif'
+import styled from 'styled-components'
+import colors from '../../utils/style/colors'
 
-  const contentStyle = {
-    backgroundColor: '#fff',
-    padding: '40px',
-    borderRadius: '10px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    width: '90%',
-    maxWidth: '500px',
-  }
+const ErrorWrapper = styled.div`
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: ${colors.background};
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+`
 
-  const titleStyle = {
-    fontSize: '3rem',
-    color: '#e74c3c',
-    margin: '0',
-  }
+const ErrorTitle = styled.h1`
+  font-weight: 600;
+  font-size: 48px;
+  color: ${colors.primary};
+  margin-bottom: 20px;
+`
 
-  const textStyle = {
-    fontSize: '1.25rem',
-    marginTop: '10px',
-    color: '#555',
-  }
+const ErrorSubtitle = styled.h2`
+  font-weight: 300;
+  color: ${colors.secondary};
+  font-size: 24px;
+  margin-bottom: 30px;
+`
 
-  const buttonStyle = {
-    display: 'inline-block',
-    marginTop: '20px',
-    padding: '10px 20px',
-    fontSize: '1rem',
-    color: 'white',
-    backgroundColor: '#3498db',
-    textDecoration: 'none',
-    borderRadius: '5px',
-    transition: 'background-color 0.3s ease',
-  }
+const Illustration = styled.img`
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+`
 
-  const buttonHoverStyle = {
-    backgroundColor: '#2980b9',
-  }
-
-  const fadeIn = {
-    animation: 'fadeIn 1s ease-out',
-  }
-
+const Error = () => {
   return (
-    <div style={containerStyle}>
-      <div style={{ ...contentStyle, ...fadeIn }}>
-        <h1 style={titleStyle}>Oups 🙈</h1>
-        <p style={textStyle}>Cette page n'existe pas</p>
-        <a
-          href="/"
-          style={buttonStyle}
-          onMouseOver={(e) =>
-            (e.currentTarget.style.backgroundColor =
-              buttonHoverStyle.backgroundColor)
-          }
-          onMouseOut={(e) =>
-            (e.currentTarget.style.backgroundColor = '#3498db')
-          }
-        >
-          Retour à l'accueil
-        </a>
-      </div>
-    </div>
+    <ErrorWrapper>
+      <ErrorTitle>Oops, quelque chose s'est mal passé !</ErrorTitle>
+      <ErrorSubtitle>
+        Nous n'avons pas pu trouver la page que vous cherchez.
+      </ErrorSubtitle>
+      <Illustration src={pageError} alt="Page not found illustration" />
+    </ErrorWrapper>
   )
 }
 

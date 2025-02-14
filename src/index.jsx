@@ -6,17 +6,19 @@ import reportWebVitals from './reportWebVitals'
 import Home from './pages/Home'
 import Survey from './pages/Survey/index'
 import Header from './components/Header'
-import ClientForm from './components/ClientForm'
-import FreelanceForm from './components/FreelanceForm'
+import Results from './pages/Results/index'
 import Error from './components/Error'
 import Freelances from './pages/Freelances'
 import { createGlobalStyle } from 'styled-components' // Import de createGlobalStyle
 
 // Déclaration de GlobalStyle avant son utilisation
 const GlobalStyle = createGlobalStyle`
-    div {
-        font-family: 'Trebuchet MS', Helvetica, sans-serif;
-        
+    * {
+      font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
     }
 `
 
@@ -28,12 +30,10 @@ root.render(
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/survey/:questionNumber" element={<Survey />}>
-          <Route path="client" element={<ClientForm />} />
-          <Route path="freelance" element={<FreelanceForm />} />
-        </Route>
-        <Route path="*" element={<Error />} />
+        <Route path="/survey/:questionNumber" element={<Survey />} />
+        <Route path="/results" element={<Results />} />
         <Route path="/freelances" element={<Freelances />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </Router>
   </React.StrictMode>
