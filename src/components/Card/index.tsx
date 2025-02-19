@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 // Here, I used TypeScript to type the props 'label', 'title', and 'picture'.
+=======
+>>>>>>> 397408b417be94957a99b9547a403336d97e6977
 interface CardProps {
   label: string
   title: string
