@@ -1,8 +1,12 @@
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
+type SurveyParams = {
+  questionNumber: string
+}
+
 function Survey() {
-  const { questionNumber } = useParams()
+  const { questionNumber = '1' } = useParams<SurveyParams>()
   const questionNumberInt = parseInt(questionNumber)
   const prevQuestionNumber = questionNumberInt === 1 ? 1 : questionNumberInt - 1
   const nextQuestionNumber = questionNumberInt + 1
@@ -10,7 +14,7 @@ function Survey() {
     <div>
       <h1>Questionnaire 🧮</h1>
       <h2>Question {questionNumber}</h2>
-      <Link to={`/survey/${prevQuestionNumber}`}>Précédent</Link> <span></span>
+      <Link to={`/survey/${prevQuestionNumber}`}>Précédent</Link>
       {questionNumberInt === 10 ? (
         <Link to="/results">Résultats</Link>
       ) : (
