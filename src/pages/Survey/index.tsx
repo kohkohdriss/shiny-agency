@@ -1,20 +1,25 @@
-import { useParams } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-
-type SurveyParams = {
-  questionNumber: string
-}
+import { useParams, Link } from 'react-router-dom'
 
 function Survey() {
-  const { questionNumber = '1' } = useParams<SurveyParams>()
+  const { questionNumber } = useParams<{ questionNumber: string | undefined }>()
+
+  if (!questionNumber) {
+    return <div>Erreur : le numéro de la question est introuvable.</div>
+  }
+
   const questionNumberInt = parseInt(questionNumber)
+  if (isNaN(questionNumberInt)) {
+    return <div>Erreur : le numéro de la question est invalide.</div>
+  }
+
   const prevQuestionNumber = questionNumberInt === 1 ? 1 : questionNumberInt - 1
   const nextQuestionNumber = questionNumberInt + 1
+
   return (
     <div>
       <h1>Questionnaire 🧮</h1>
       <h2>Question {questionNumber}</h2>
-      <Link to={`/survey/${prevQuestionNumber}`}>Précédent</Link>
+      <Link to={`/survey/${prevQuestionNumber}`}>Précédent</Link> <span></span>
       {questionNumberInt === 10 ? (
         <Link to="/results">Résultats</Link>
       ) : (
